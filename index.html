@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Growth Services | LearnwithUs</title>
+    <style>
+        :root {
+            --primary: #0077b5; /* LinkedIn Blue */
+            --primary-dark: #005582;
+            --dark: #313335;
+            --light: #f3f6f8;
+            --white: #ffffff;
+            --accent: #00a0dc;
+            --text-gray: #555;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* --- Header --- */
+        header {
+            background: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.6rem 1.8rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,119,181,0.3);
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, #f0f7fb 0%, #ffffff 100%);
+            padding: 5rem 5%;
+            text-align: center;
+            border-bottom: 1px solid #e1e9ee;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- General Section Styles --- */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .bg-light {
+            background-color: var(--light);
+        }
+
+        .content-block {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Large Images */
+        .feature-image {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-image:hover {
+            transform: scale(1.01);
+        }
+
+        .text-content {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .text-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .text-content p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* --- Pricing Section --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            position: relative;
+            border: 1px solid #eee;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .card.featured {
+            border: 2px solid var(--primary);
+            background: #fdfdfd;
+        }
+
+        .card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 1rem 0;
+            color: var(--dark);
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: normal;
+            color: #888;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .features li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .card-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+            background: #eef3f6;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: background 0.2s;
+        }
+
+        .card.featured .card-btn {
+            background: var(--primary);
+            color: white;
+        }
+
+        .card-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            .feature-image { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">LearnwithUs | IT & Growth</div>
+        <a href="https://www.instagram.com/learn_with_us_1007/?next=" class="cta-button" target="_blank">Book Now</a>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section class="hero">
+        <h1>Stop Treating LinkedIn Like a Resume.<br><span>Start Generating Leads.</span></h1>
+        <p>Professional Account Management & Content Creation. We build your authority while you run your business.</p>
+        <a href="#pricing" class="cta-button">See Packages</a>
+    </section>
+
+    <!-- 2. The Problem (Visual: Slide 4) -->
+    <section>
+        <h2>The "DIY" Struggle is Real</h2>
+        <p class="section-subtitle">Why most professionals fail to grow on LinkedIn.</p>
+        
+        <div class="content-block">
+            <img src="slide4.png" alt="The Content Struggle" class="feature-image">
+            <div class="text-content">
+                <h3>Consistency is Hard.</h3>
+                <p>You know you need to post, but you don't have time. The result? Low engagement and zero leads. We fix this with a "Done-For-You" system.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. The Transformation (Visual: Slide 3) -->
+    <section class="bg-light">
+        <h2>From "Ghost Town" to "Lead Magnet"</h2>
+        <p class="section-subtitle">See the difference professional optimization makes.</p>
+        
+        <div class="content-block">
+            <img src="slide3.png" alt="Before and After Profile" class="feature-image">
+            <div class="text-content">
+                <h3>First Impressions Matter.</h3>
+                <p>We transform your profile from a boring CV into a high-converting landing page that tells clients exactly why they should hire you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Why It Matters (Visual: Slide 2) -->
+    <section>
+        <h2>Why Invest in LinkedIn?</h2>
+        <p class="section-subtitle">It's not just social media. It's your business future.</p>
+        
+        <div class="content-block">
+            <img src="slide2.png" alt="Benefits of LinkedIn" class="feature-image">
+            <div class="text-content">
+                <h3>Unlock New Opportunities.</h3>
+                <p>From generating high-quality B2B leads to building strategic partnerships, an active LinkedIn presence puts you in the room with decision-makers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Our Process (Visual: Slide 6) -->
+    <section class="bg-light">
+        <h2>How We Do It</h2>
+        <p class="section-subtitle">Our proven content engine.</p>
+        
+        <div class="content-block">
+            <img src="slide6.png" alt="Our Process" class="feature-image">
+            <div class="text-content">
+                <h3>Strategy + Creativity + Consistency.</h3>
+                <p>We handle everything: The strategy, the copywriting, and the design. You simply approve the content, and we handle the rest.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Pricing & Packages (Visual: Slide 1) -->
+    <section id="pricing">
+        <h2>Choose Your Growth Path</h2>
+        <p class="section-subtitle">Transparent pricing. No hidden fees.</p>
+
+        <!-- Visual Menu -->
+        <div class="content-block" style="margin-bottom: 3rem;">
+            <img src="slide1.png" alt="Service Menu" class="feature-image">
+        </div>
+
+        <!-- Interactive Pricing Cards -->
+        <div class="pricing-grid">
+            <!-- Starter -->
+            <div class="card">
+                <h3>Starter</h3>
+                <div class="price">₹2,000<span>/mo</span></div>
+                <ul class="features">
+                    <li><strong>10 Posts</strong> per month</li>
+                    <li>Professional Copywriting</li>
+                    <li>Custom Images Included</li>
+                    <li>Steady Visibility</li>
+                </ul>
+                <a href="https://www.instagram.com/learn_with_us_1007/?next=" class="card-btn" target="_blank">Select Starter</a>
+            </div>
+
+            <!-- Professional -->
+            <div class="card featured">
+                <div style="position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--primary); color:white; padding:4px 12px; border-radius:12px; font-size:0.8rem; font-weight:bold;">MOST POPULAR</div>
+                <h3>Professional</h3>
+                <div class="price">₹4,000<span>/mo</span></div>
+                <ul class="features">
+                    <li><strong>20 Posts</strong> per month</li>
+                    <li>Professional Copywriting</li>
+                    <li>Custom Images Included</li>
+                    <li>High Growth Strategy</li>
+                </ul>
+                <a href="https://www.instagram.com/learn_with_us_1007/?next=" class="card-btn" target="_blank">Select Professional</a>
+            </div>
+
+            <!-- Influencer -->
+            <div class="card">
+                <h3>Influencer</h3>
+                <div class="price">₹6,000<span>/mo</span></div>
+                <ul class="features">
+                    <li><strong>Everyday Posting</strong> (30/mo)</li>
+                    <li>Maximum Authority</li>
+                    <li>Priority Support</li>
+                    <li><strong>Best Value</strong></li>
+                </ul>
+                <a href="https://www.instagram.com/learn_with_us_1007/?next=" class="card-btn" target="_blank">Select Influencer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. The Profile Fix (Visual: Slide 5) -->
+    <section class="bg-light">
+        <h2>Phase 1: The Foundation</h2>
+        
+        <div class="content-block">
+            <img src="slide5.png" alt="Profile Optimization" class="feature-image">
+            <div class="text-content">
+                <h3>One-Time Profile Power-Up (₹2,000)</h3>
+                <p>Before we start posting, we ensure your house is in order. This one-time service includes SEO optimization, headline rewriting, and a banner upgrade.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Network Booster (Visual: Slide 7) -->
+    <section>
+        <h2>Supercharge Your Network</h2>
+        
+        <div class="content-block">
+            <img src="slide7.png" alt="Network Booster" class="feature-image">
+            <div class="text-content">
+                <h3>The "Network Booster" Add-On (+₹1,000/mo)</h3>
+                <p>Content is king, but distribution is queen. We actively find and connect you with your ideal clients so your posts are seen by the right people.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>LearnwithUs</strong> | Helping You Grow & Scale Digitally</p>
+        <p style="margin-top: 10px;">Email: <a href="mailto:ashfaqueyonus655@gmail.com">ashfaqueyonus655@gmail.com</a></p>
+        <p style="margin-top: 1rem;">
+            <a href="legal.html" style="color: #aaa; text-decoration: underline;">Terms & Privacy Policy</a>
+        </p>
+        <p style="font-size: 0.8rem; margin-top: 2rem; color: #777;">&copy; 2025 LearnwithUs. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
